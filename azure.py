@@ -1,10 +1,10 @@
 import os
-from openai import AzureOpenAI
+from openai import AzureOpenAI, azure_endpoint, api_key
 
 client = AzureOpenAI(
     api_version="2024-12-01-preview",
-    azure_endpoint="https://nps-analysis-project-resource.cognitiveservices.azure.com/openai/deployments/gpt-4o/chat/completions?api-version=2025-01-01-preview",
-    api_key="3Vwt38LUWPTAjFyc60WLl4vNy46Qfc4XQqyR5RkKKo5WvXoDGyWSJQQJ99BLAC77bzfXJ3w3AAAAACOGRxin"
+    azure_endpoint=os.getenv("azure_endpoint"),
+    api_key=os.getenv("api_key")
 )
 
 def detect_sentiment_emotion(conversation_json: str) -> str:
